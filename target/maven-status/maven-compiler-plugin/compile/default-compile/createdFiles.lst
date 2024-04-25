@@ -1,0 +1,3 @@
+com\bookingsystem\BookingSystem\BookingSystemApplication.class
+com\bookingsystem\BookingSystem\controller\health\HealthController.class
+com\bookingsystem\BookingSystem\ServletInitializer.class
