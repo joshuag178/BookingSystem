@@ -39,7 +39,16 @@
 			<version>RELEASE</version>
 			<scope>compile</scope>
 		</dependency>
-	</dependencies>
+		<dependency>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+			<groupId>org.springframework.boot</groupId>
+		</dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.32</version>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>

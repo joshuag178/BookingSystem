@@ -1,7 +1,8 @@
-com\bookingsystem\BookingSystem\service\user\UsersServiceMap.class
 com\bookingsystem\BookingSystem\BookingSystemApplication.class
+com\bookingsystem\BookingSystem\repository\entity\User.class
 com\bookingsystem\BookingSystem\controller\user\UserController.class
-com\bookingsystem\BookingSystem\repository\user\User.class
+com\bookingsystem\BookingSystem\service\impl\UserService.class
+com\bookingsystem\BookingSystem\service\IUserService.class
+com\bookingsystem\BookingSystem\repository\UserRepository.class
 com\bookingsystem\BookingSystem\controller\health\HealthController.class
-com\bookingsystem\BookingSystem\service\user\UsersService.class
 com\bookingsystem\BookingSystem\ServletInitializer.class
