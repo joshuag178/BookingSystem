@@ -46,3 +46,20 @@ Implementar la capa de persistencia con Spring Data MongoDB.
   * Ejecutar el proyecto y utilizar Postman para verificar el correcto funcionamiento de los respectivos Endpoints y verificar que la información sea almacenada en MongoDB Atlas.
   * Guardar los cambios en el repositorio del proyecto integrador y envíar el enlace con la solución.
 
+## Cuarta Actividad
+Implementar la capa de seguridad de tu API REST utilizando JWT:
+* Agregar las siguientes dependencias al archivo pom.xml
+  ```xml
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+  </dependency>
+  
+  <dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt</artifactId>
+  </dependency>
+* Implementar la clase SecurityConfiguration. 
+* Implementar el AuthenticationController con sus respectivos Dtos. 
+* Implementar el JWT Request Filter. 
+* Compartir el repositorio con la solución.
