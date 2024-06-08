@@ -1,65 +1,81 @@
-# Booking System
-## Primer Actividad
- * Crear un proyecto base utilizando Spring Initializr con las siguientes características:
-    * Maven Project.
-    * Language Java.
-    * Última versión de Spring Boot predeterminada.
-    * Java Versión 8.
-    * Agregar en la parte derecha la dependencia de Spring Web.
-* Crea un nuevo paquete llamado controller.health y adentro crea la clase HealthController.
+# Diseño y Creación de un Backend con Capa de Seguridad y Pruebas Unitarias
+Selecciona alguno de los siguientes proyectos e implmente las tareas a realizar para demostrar tus conocmientos de las diferentes tecnologías que debe dominar un desarrollador Java Backend Nivel Intermedio:
 
-## Segunda Actividad
-* Definir la interfaz del servicio y crear una implementación utilizando un HashMap para realizar las operaciones CRUD sobre los usuarios:
-   * Create.
-   * Read.
-   * Update.
-   * Delete.
-* Configurar la implementación del Servicio de Usuarios para que sea inyectable con @Service.
-* Implementar el Controlador de Usuarios inyectando el servicio de usuarios y manejando los diferentes métodos requeridos para implementar el CRUD:
-  * GET.
-  * POST.
-  * PUT.
-  * DELETE.
-* Ejecutar el proyecto y utilizar Postman para verificar el correcto funcionamiento de los respectivos Endpoints.
-* Guardar los cambios en el repositorio del proyecto integrador y enviar el enlace con la solución.
+Opción 1: Sistema de Gestión de Biblioteca
+Contexto: Desarrolla un backend para un sistema de gestión de biblioteca que permita a los usuarios buscar, reservar y prestar libros. El sistema debe manejar información de libros, usuarios y préstamos.
 
-## Tercera Actividad
-Implementar la capa de persistencia con Spring Data MongoDB.
-* Parte 1: Configuración y conexión con el cluster de MongoDB
-  * Crear el cluster del proyecto con la configuración requerida para conectar el proyecto de Spring Boot:
-    * Crear el cluster.
-    * Crear el usuario y contraseña con acceso al cluster.
-    * Agregar el acceso desde cualquier lugar al cluster.
-  * Agregar la dependencia de spring-boot-starter-data-mongodb a tu pom.xml:
-    ```xml
-    <dependency> 
-    <artifactId>spring-boot-starter-data-mongodb</artifactId>
-    <groupId>org.springframework.boot</groupId> 
-    </dependency>
-  * Agregar la variable de entorno al proyecto para la configuración de la URI de conexión de MongoDB.
-  * Ejecutar la aplicación y verificar la conexión con el cluster de MongoDB.
-* Parte 2: Implementando tus documentos y repositorios para almacenar tus datos en MongoDB
-  * Implementar la clase Document del modelo que se quiere almacenar en la base de datos con sus respectivos atributos. 
-  * Crear la respectiva Interfaz del Repositorio para el documento creado en 1.
-  * Implementar la interfaz y el servicio para realizar las operaciones CRUD sobre el modelo almacenado en la base de datos.
-  * Agregar la anotación @Service a el controlador respectivo e implementa la lógica para utilizar el servicio que te permite almacenar y consultar los datos desde el cluster de MongoDB.
-  * Ejecutar el proyecto y utilizar Postman para verificar el correcto funcionamiento de los respectivos Endpoints y verificar que la información sea almacenada en MongoDB Atlas.
-  * Guardar los cambios en el repositorio del proyecto integrador y envíar el enlace con la solución.
+Opción 2: Plataforma de Reservas de Restaurantes
+Contexto: Implementa un backend para una plataforma de reserva de mesas en restaurantes. El sistema debe permitir a los usuarios ver la disponibilidad, reservar mesas y cancelar reservas. Además, los restaurantes deben poder gestionar sus mesas y horarios.
 
-## Cuarta Actividad
-Implementar la capa de seguridad de tu API REST utilizando JWT:
-* Agregar las siguientes dependencias al archivo pom.xml
-  ```xml
-  <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-security</artifactId>
-  </dependency>
-  
-  <dependency>
-    <groupId>io.jsonwebtoken</groupId>
-    <artifactId>jjwt</artifactId>
-  </dependency>
-* Implementar la clase SecurityConfiguration. 
-* Implementar el AuthenticationController con sus respectivos Dtos. 
-* Implementar el JWT Request Filter. 
-* Compartir el repositorio con la solución.
+Opción 3: Aplicación de Seguimiento de Gastos
+Contexto: Crea un backend para una aplicación de seguimiento de gastos personales. Los usuarios deben poder registrar sus ingresos y gastos, categorizarlos y ver resúmenes y tendencias de sus finanzas.
+
+Opción 4: Sistema de Administración de Cursos en Línea
+Contexto: Desarrolla un backend para un sistema de gestión de cursos en línea. Esto incluye la inscripción de estudiantes, la gestión de cursos y módulos, y la asignación y seguimiento de tareas y exámenes.
+
+Requisitos Técnicos:
+* Lenguaje de programación: Java
+* Framework: Spring Boot
+* Bases de datos: MongoDB y una base de datos relacional (MySQL o PostgreSQL)
+* Seguridad: JWT (JSON Web Tokens)
+* Principio de Inversión de Control
+
+Tareas a Realizar:
+1. Configuración Inicial:
+   * Crea un proyecto Spring Boot.
+   * Configura las dependencias para MongoDB y una base de datos relacional.
+   
+
+2. Modelo de Datos:
+   * Define clases del modelo de datos para tu caso específico, como entidades y documentos.
+
+
+3. Conexión con Bases de Datos:
+   * Implementa servicios para persistencia con MongoDB y la base de datos relacional. 
+   * Implementa los repositorios y las clases necesarias para cada tipo de base de datos. 
+
+
+4. Controlador REST:
+   * Crea un controlador REST con endpoints para operaciones CRUD y otras funcionalidades específicas de tu caso.
+   
+
+5. Servicio de Negocio:
+   * Implementa la lógica de negocio.
+
+
+6. Principio de Inversión de Control:
+   * Utiliza la inversión de control para cambiar entre bases de datos.
+   
+
+7. Seguridad:
+   * Implementa seguridad utilizando JWT. 
+   * Configura la autenticación y autorización en tus endpoints.
+
+
+8. Pruebas Unitarias:
+   * Escribe pruebas unitarias para los componentes clave de tu aplicación (modelos, repositorios, servicios, controladores). 
+   * Utiliza frameworks de pruebas como JUnit y Mockito.
+
+Criterios de Aceptación:
+* Cumplimiento del modelo de madurez Richardson nivel 2. 
+* Uso correcto de verbos HTTP y códigos de estado. 
+* Implementación adecuada de Spring Data. 
+* Funcionalidad CRUD completa. 
+* Manejo de excepciones. 
+* Seguridad con JWT implementada correctamente. 
+* Cobertura de pruebas unitarias en componentes críticos.
+
+Instrucciones:
+* Diseña y crea un proyecto de Spring Boot que se ajuste al contexto y requisitos dados. 
+* Sigue las tareas detalladas para desarrollar la solución. 
+* Asegúrate de que el proyecto funcione correctamente y cumpla con los criterios de aceptación. 
+* Documenta tu código y comparte tu solución, enfocándote en las clases y componentes principales.
+
+Atributos de Calidad Esperados:
+* Uso de mejores prácticas de codificación. 
+* Adherencia a los principios SOLID. 
+* Claro uso de la inyección de dependencias. 
+* Uso correcto de las anotaciones de Spring Boot. 
+* Conexión efectiva con capas de persistencia. 
+
+Comparte el enlace a tu repositorio con la implementación.
