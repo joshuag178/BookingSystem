@@ -5,6 +5,7 @@ com\bookingsystem\BookingSystem\constants\ERole.class
 com\bookingsystem\BookingSystem\handler\exception\RoleNotFoundException.class
 com\bookingsystem\BookingSystem\handler\GlobalExceptionHandler.class
 com\bookingsystem\BookingSystem\config\jwt\AuthTokenFilter.class
+com\bookingsystem\BookingSystem\controller\UserController$UserResponse.class
 com\bookingsystem\BookingSystem\dto\ApiResponseDto.class
 com\bookingsystem\BookingSystem\dto\SignInRequestDto.class
 com\bookingsystem\BookingSystem\repository\RoleRepository.class
@@ -25,6 +26,7 @@ com\bookingsystem\BookingSystem\controller\UserController.class
 com\bookingsystem\BookingSystem\repository\entity\User.class
 com\bookingsystem\BookingSystem\service\IRoleService.class
 com\bookingsystem\BookingSystem\controller\RoleController.class
+com\bookingsystem\BookingSystem\config\TestSecurityConfig.class
 com\bookingsystem\BookingSystem\dto\ApiResponseDto$ApiResponseDtoBuilder.class
 com\bookingsystem\BookingSystem\config\WebSecurityConfig.class
 com\bookingsystem\BookingSystem\dto\SignInResponseDto.class

@@ -11,6 +11,7 @@ D:\Cursos\NTCL - Java Backend Spring Boot Developer Mid Level\Actividades\Clase 
 D:\Cursos\NTCL - Java Backend Spring Boot Developer Mid Level\Actividades\Clase 9\BookingSystem\src\main\java\com\bookingsystem\BookingSystem\config\jwt\AuthTokenFilter.java
 D:\Cursos\NTCL - Java Backend Spring Boot Developer Mid Level\Actividades\Clase 9\BookingSystem\src\main\java\com\bookingsystem\BookingSystem\handler\exception\RoleNotFoundException.java
 D:\Cursos\NTCL - Java Backend Spring Boot Developer Mid Level\Actividades\Clase 9\BookingSystem\src\main\java\com\bookingsystem\BookingSystem\repository\factory\RoleFactory.java
+D:\Cursos\NTCL - Java Backend Spring Boot Developer Mid Level\Actividades\Clase 9\BookingSystem\src\main\java\com\bookingsystem\BookingSystem\config\TestSecurityConfig.java
 D:\Cursos\NTCL - Java Backend Spring Boot Developer Mid Level\Actividades\Clase 9\BookingSystem\src\main\java\com\bookingsystem\BookingSystem\repository\UserRepository.java
 D:\Cursos\NTCL - Java Backend Spring Boot Developer Mid Level\Actividades\Clase 9\BookingSystem\src\main\java\com\bookingsystem\BookingSystem\handler\exception\UserAlreadyExistsException.java
 D:\Cursos\NTCL - Java Backend Spring Boot Developer Mid Level\Actividades\Clase 9\BookingSystem\src\main\java\com\bookingsystem\BookingSystem\handler\GlobalExceptionHandler.java
