@@ -41,16 +41,6 @@ public class LoanController {
         return loanService.findByBookId(bookId);
     }
 
-    @PostMapping("/new")
-        public ResponseEntity<Loan> createLoanParams(@RequestParam String userId, @RequestParam String bookId,  @RequestParam String borrowerName,  @RequestParam String borrowerLastName,  @RequestParam String borrowerDPI,  @RequestParam String borrowerAddress,  @RequestParam String borrowerEmail, @RequestParam String type) {
-        Loan loan = loanService.createLoanParams(userId, bookId, borrowerName, borrowerLastName, borrowerDPI, borrowerAddress, borrowerEmail, type);
-        if (loan != null) {
-            return ResponseEntity.status(HttpStatus.CREATED).body(loan);
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
-    }
-
     /*@PostMapping
     public ResponseEntity<Loan> createLoan(@RequestBody Loan loan) {
         Loan createdLoan = loanService.createLoan(loan);

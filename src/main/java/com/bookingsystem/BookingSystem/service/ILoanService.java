@@ -12,8 +12,6 @@ public interface ILoanService {
     Optional<Loan> findById(String id);
     List<Loan> findByUserId(String userId);
     List<Loan> findByBookId(String bookId);
-    //Loan createLoan(String userId, String bookId);
-    Loan createLoanParams(String userId, String bookId, String borrowerName, String borrowerLastName, String borrowerDPI, String borrowerAddress, String borrowerEmail, String type);
     Loan createLoan(Loan loanDetails);
     void reserveBook(String bookId);
     boolean returnLoan(String loanId);

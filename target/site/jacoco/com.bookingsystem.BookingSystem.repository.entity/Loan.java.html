@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Loan.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookingSystem</a> &gt; <a href="index.source.html" class="el_package">com.bookingsystem.BookingSystem.repository.entity</a> &gt; <span class="el_source">Loan.java</span></div><h1>Loan.java</h1><pre class="source lang-java linenums">package com.bookingsystem.BookingSystem.repository.entity;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.time.LocalDate;
+
+@Document(collection = &quot;loans&quot;)
+<span class="pc bpc" id="L14" title="69 of 94 branches missed.">@Data</span>
+<span class="fc" id="L15">@AllArgsConstructor</span>
+<span class="fc" id="L16">@NoArgsConstructor</span>
+<span class="nc" id="L17">@Builder</span>
+
+public class Loan {
+    @Id
+<span class="fc" id="L21">    private String id;</span>
+
+    @DBRef
+<span class="fc" id="L24">    private User user;</span>
+
+    @DBRef
+<span class="fc" id="L27">    private Book book;</span>
+
+<span class="fc" id="L29">    private LocalDate loanDate;</span>
+<span class="fc" id="L30">    private LocalDate returnDate;</span>
+
+<span class="fc" id="L32">    private String borrowerName;</span>
+<span class="fc" id="L33">    private String borrowerLastName;</span>
+<span class="fc" id="L34">    private String borrowerDPI;</span>
+<span class="fc" id="L35">    private String borrowerAddress;</span>
+<span class="fc" id="L36">    private String borrowerEmail;</span>
+
+<span class="fc" id="L38">    private String type;</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -61,7 +61,7 @@ public class UserControllerTest {
 
         when(userService.getAllUsers()).thenReturn(users);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/users"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/users"))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
@@ -100,7 +100,7 @@ public class UserControllerTest {
         when(userService.findById(userId)).thenReturn(Optional.of(user));
 
         // Act & Assert
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/users/{id}", userId))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/users/{id}", userId))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.user.username").value(user.getUsername()))
@@ -114,7 +114,7 @@ public class UserControllerTest {
         when(userService.findById(userId)).thenReturn(Optional.empty());
 
         // Act & Assert
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/users/{id}", userId))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/users/{id}", userId))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.user").isEmpty())
@@ -133,7 +133,7 @@ public class UserControllerTest {
                 "email1@example.com", "password1", true, roles);
 
         //Act & Assert
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/users")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/users")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(user)))
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
@@ -158,7 +158,7 @@ public class UserControllerTest {
         when(userService.updateUser(userId, updatedUserDetails)).thenReturn(updatedUser);
 
         // Act & Assert
-        mockMvc.perform(MockMvcRequestBuilders.put("/api/users/{id}", userId)
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/users/{id}", userId)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(updatedUserDetails)))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -183,7 +183,7 @@ public class UserControllerTest {
         when(userService.updateUser(userId, updatedUserDetails)).thenReturn(null);
 
         // Act & Assert
-        mockMvc.perform(MockMvcRequestBuilders.put("/api/users/{id}", userId)
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/users/{id}", userId)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(updatedUserDetails)))
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
@@ -197,7 +197,7 @@ public class UserControllerTest {
         when(userService.deleteById(userId)).thenReturn(true);
 
         // Act & Assert
-        mockMvc.perform(MockMvcRequestBuilders.delete("/api/users/{id}", userId))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/users/{id}", userId))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=UTF-8"))
                 .andExpect(MockMvcResultMatchers.content().string("User deleted successfully."));
@@ -213,7 +213,7 @@ public class UserControllerTest {
         when(userService.deleteById(userId)).thenReturn(false);
 
         // Act & Assert
-        mockMvc.perform(MockMvcRequestBuilders.delete("/api/users/{id}", userId))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/users/{id}", userId))
                 .andExpect(MockMvcResultMatchers.status().isNotFound())
                 .andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=UTF-8"))
                 .andExpect(MockMvcResultMatchers.content().string("User not found."));

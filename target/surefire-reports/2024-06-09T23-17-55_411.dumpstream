@@ -1,4 +1,4 @@
-# Created at 2024-06-07T19:07:45.688
+# Created at 2024-06-09T23:17:55.580
 Boot Manifest-JAR contains absolute paths in classpath 'D:\Cursos\NTCL - Java Backend Spring Boot Developer Mid Level\Actividades\Clase 9\BookingSystem\target\test-classes'
 Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
 'other' has different root

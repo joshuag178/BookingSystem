@@ -19,13 +19,13 @@ public class RoleController {
 
     @GetMapping
     public List&lt;Role&gt; getAllRoles() {
-<span class="nc" id="L22">        return roleService.getAllRoles();</span>
+<span class="fc" id="L22">        return roleService.getAllRoles();</span>
     }
 
     @PostMapping
     public ResponseEntity&lt;Role&gt; createUser(@RequestBody Role role) {
-<span class="nc" id="L27">        roleService.save(role);</span>
-<span class="nc" id="L28">        return ResponseEntity.status(HttpStatus.CREATED).body(role);</span>
+<span class="fc" id="L27">        roleService.save(role);</span>
+<span class="fc" id="L28">        return ResponseEntity.status(HttpStatus.CREATED).body(role);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

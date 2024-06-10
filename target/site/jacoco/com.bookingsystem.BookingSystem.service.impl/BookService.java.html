@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BookService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookingSystem</a> &gt; <a href="index.source.html" class="el_package">com.bookingsystem.BookingSystem.service.impl</a> &gt; <span class="el_source">BookService.java</span></div><h1>BookService.java</h1><pre class="source lang-java linenums">package com.bookingsystem.BookingSystem.service.impl;
+
+import com.bookingsystem.BookingSystem.repository.BookRepository;
+import com.bookingsystem.BookingSystem.repository.entity.Book;
+import com.bookingsystem.BookingSystem.service.IBookService;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.Optional;
+
+@Component
+public class BookService implements IBookService {
+    private final BookRepository bookRepository;
+
+<span class="fc" id="L15">    public BookService(BookRepository bookRepository) {</span>
+<span class="fc" id="L16">        this.bookRepository = bookRepository;</span>
+<span class="fc" id="L17">    }</span>
+
+    @Override
+    public List&lt;Book&gt; getAllBooks() {
+<span class="nc" id="L21">        return bookRepository.findAll();</span>
+    }
+
+    @Override
+    public Optional&lt;Book&gt; findById(String id) {
+<span class="nc" id="L26">        return bookRepository.findById(id);</span>
+    }
+
+    @Override
+    public List&lt;Book&gt; searchBooksByTitle(String title) {
+<span class="nc" id="L31">        return bookRepository.findByTitleContaining(title);</span>
+    }
+
+    @Override
+    public List&lt;Book&gt; searchBooksByAuthor(String author) {
+<span class="nc" id="L36">        return bookRepository.findByAuthorContaining(author);</span>
+    }
+
+    @Override
+    public void save(Book book) {
+<span class="nc" id="L41">        bookRepository.save(book);</span>
+<span class="nc" id="L42">    }</span>
+
+    @Override
+    public Book updateBook(String id, Book bookDetails) {
+<span class="nc" id="L46">        Optional&lt;Book&gt; bookOptional = bookRepository.findById(id);</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        if (bookOptional.isPresent()) {</span>
+<span class="nc" id="L48">            Book book = bookOptional.get();</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">            if (bookDetails.getTitle() != null) {</span>
+<span class="nc" id="L50">                book.setTitle(bookDetails.getTitle());</span>
+            }
+<span class="nc bnc" id="L52" title="All 2 branches missed.">            if (bookDetails.getAuthor() != null) {</span>
+<span class="nc" id="L53">                book.setAuthor(bookDetails.getAuthor());</span>
+            }
+<span class="nc bnc" id="L55" title="All 2 branches missed.">            if (bookDetails.getEditorial() != null) {</span>
+<span class="nc" id="L56">                book.setEditorial(bookDetails.getEditorial());</span>
+            }
+<span class="nc bnc" id="L58" title="All 2 branches missed.">            if (bookDetails.getPublishedDate() != null) {</span>
+<span class="nc" id="L59">                book.setPublishedDate(bookDetails.getPublishedDate());</span>
+            }
+<span class="nc" id="L61">            return bookRepository.save(book);</span>
+        } else {
+<span class="nc" id="L63">            return null;</span>
+        }
+    }
+
+    @Override
+    public boolean deleteById(String id) {
+<span class="nc" id="L69">        Optional&lt;Book&gt; bookOptional = bookRepository.findById(id);</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">        if (bookOptional.isPresent()) {</span>
+<span class="nc" id="L71">            bookRepository.deleteById(id);</span>
+<span class="nc" id="L72">            return true;</span>
+        } else {
+<span class="nc" id="L74">            return false;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LoanController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookingSystem</a> &gt; <a href="index.source.html" class="el_package">com.bookingsystem.BookingSystem.controller</a> &gt; <span class="el_source">LoanController.java</span></div><h1>LoanController.java</h1><pre class="source lang-java linenums">package com.bookingsystem.BookingSystem.controller;
+
+import com.bookingsystem.BookingSystem.handler.exception.BookNotAvailableException;
+import com.bookingsystem.BookingSystem.handler.exception.ResourceNotFoundException;
+import com.bookingsystem.BookingSystem.repository.entity.Loan;
+import com.bookingsystem.BookingSystem.service.impl.LoanService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping(&quot;/api/v1/loans&quot;)
+public class LoanController {
+    private final LoanService loanService;
+
+<span class="fc" id="L19">    public LoanController(LoanService loanService) {</span>
+<span class="fc" id="L20">        this.loanService = loanService;</span>
+<span class="fc" id="L21">    }</span>
+
+    @GetMapping
+    public List&lt;Loan&gt; getAllLoans(){
+<span class="fc" id="L25">        return loanService.getAllLoans();</span>
+    }
+
+    @GetMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Loan&gt; getLoanById(@PathVariable String id) {
+<span class="fc" id="L30">        Optional&lt;Loan&gt; loanOptional = loanService.findById(id);</span>
+<span class="fc" id="L31">        return loanOptional.map(ResponseEntity::ok).orElseGet(() -&gt; ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));</span>
+    }
+
+    @GetMapping(&quot;/user/{userId}&quot;)
+    public List&lt;Loan&gt; getLoansByUserId(@PathVariable String userId) {
+<span class="fc" id="L36">        return loanService.findByUserId(userId);</span>
+    }
+
+    @GetMapping(&quot;/book/{bookId}&quot;)
+    public List&lt;Loan&gt; getLoansByBookId(@PathVariable String bookId) {
+<span class="fc" id="L41">        return loanService.findByBookId(bookId);</span>
+    }
+
+    /*@PostMapping
+    public ResponseEntity&lt;Loan&gt; createLoan(@RequestBody Loan loan) {
+        Loan createdLoan = loanService.createLoan(loan);
+        if (createdLoan != null) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(createdLoan);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }*/
+
+    @PostMapping
+    public ResponseEntity&lt;?&gt; createLoan(@RequestBody Loan loan) {
+        try {
+<span class="fc" id="L57">            Loan createdLoan = loanService.createLoan(loan);</span>
+<span class="fc" id="L58">            return ResponseEntity.status(HttpStatus.CREATED).body(createdLoan);</span>
+<span class="fc" id="L59">        } catch (BookNotAvailableException | ResourceNotFoundException e) {</span>
+<span class="fc" id="L60">            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());</span>
+        }
+    }
+
+    @PostMapping(&quot;/return/{id}&quot;)
+    public ResponseEntity&lt;String&gt; returnLoan(@PathVariable String id) {
+<span class="fc" id="L66">        boolean isReturned = loanService.returnLoan(id);</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        if (isReturned) {</span>
+<span class="fc" id="L68">            return ResponseEntity.ok(&quot;Loan returned successfully.&quot;);</span>
+        } else {
+<span class="fc" id="L70">            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(&quot;Loan not found or already returned.&quot;);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -47,36 +47,6 @@ public class LoanService implements ILoanService {
         return loanRepository.findByBookId(bookId);
     }
 
-    @Override
-    public Loan createLoanParams(String userId, String bookId, String borrowerName, String borrowerLastName, String borrowerDPI, String borrowerAddress, String borrowerEmail, String type) {
-        Optional<User> userOptional = userRepository.findById(userId);
-        Optional<Book> bookOptional = bookRepository.findById(bookId);
-
-        if (userOptional.isPresent() && bookOptional.isPresent()) {
-            User user = userOptional.get();
-            Book book = bookOptional.get();
-
-            if (book.isAvailable()) {
-                Loan loan = Loan.builder()
-                        .user(user)
-                        .book(book)
-                        .loanDate(LocalDate.now())
-                        .borrowerName(borrowerName)
-                        .borrowerLastName(borrowerLastName)
-                        .borrowerLastName(borrowerDPI)
-                        .borrowerLastName(borrowerAddress)
-                        .borrowerEmail(borrowerEmail)
-                        .type(type)
-                        .build();
-
-                book.setAvailable(false);
-                bookRepository.save(book);
-                return loanRepository.save(loan);
-            }
-        }
-        return null;
-    }
-
     /*public Loan createLoan(Loan loanDetails) {
         Optional<User> userOptional = userRepository.findById(loanDetails.getUser().getId());
         Optional<Book> bookOptional = bookRepository.findById(loanDetails.getBook().getId());
@@ -108,6 +78,7 @@ public class LoanService implements ILoanService {
         throw new ResourceNotFoundException("User or Book not found");
     }*/
 
+    @Override
     public Loan createLoan(Loan loanDetails) {
         Optional<User> userOptional = userRepository.findById(loanDetails.getUser().getId());
         Optional<Book> bookOptional = bookRepository.findById(loanDetails.getBook().getId());
