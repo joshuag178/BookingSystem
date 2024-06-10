@@ -21,4 +21,5 @@ public class Book {
     private String editorial;
     private String publishedDate;
     private boolean available;
+    private String status;
 }

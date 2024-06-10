@@ -1,6 +1,8 @@
 package com.bookingsystem.BookingSystem.handler;
 
 import com.bookingsystem.BookingSystem.dto.ApiResponseDto;
+import com.bookingsystem.BookingSystem.handler.exception.BookNotAvailableException;
+import com.bookingsystem.BookingSystem.handler.exception.ResourceNotFoundException;
 import com.bookingsystem.BookingSystem.handler.exception.RoleNotFoundException;
 import com.bookingsystem.BookingSystem.handler.exception.UserAlreadyExistsException;
 import org.springframework.http.HttpStatus;
@@ -56,4 +58,15 @@ public class GlobalExceptionHandler {
                                 .build()
                 );
     }
+
+    @ExceptionHandler(BookNotAvailableException.class)
+    public ResponseEntity<String> handleBookNotAvailableException(BookNotAvailableException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<String> handleResourceNotFoundException(ResourceNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
+
 }

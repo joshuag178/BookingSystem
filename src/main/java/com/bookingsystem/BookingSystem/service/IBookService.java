@@ -15,6 +15,4 @@ public interface IBookService {
     void save(Book book);
     Book updateBook(String id, Book bookDetails);
     boolean deleteById(String id);
-    boolean reserveBook(String bookId);
-    boolean returnBook(String bookId);
 }

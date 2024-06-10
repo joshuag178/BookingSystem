@@ -74,28 +74,4 @@ public class BookService implements IBookService {
             return false;
         }
     }
-
-    @Override
-    public boolean reserveBook(String bookId) {
-        Optional<Book> bookOptional = bookRepository.findById(bookId);
-        if (bookOptional.isPresent() && bookOptional.get().isAvailable()) {
-            Book book = bookOptional.get();
-            book.setAvailable(false);
-            bookRepository.save(book);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean returnBook(String bookId) {
-        Optional<Book> bookOptional = bookRepository.findById(bookId);
-        if (bookOptional.isPresent() && !bookOptional.get().isAvailable()) {
-            Book book = bookOptional.get();
-            book.setAvailable(true);
-            bookRepository.save(book);
-            return true;
-        }
-        return false;
-    }
 }

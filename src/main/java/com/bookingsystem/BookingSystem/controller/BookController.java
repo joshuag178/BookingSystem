@@ -58,26 +58,6 @@ public class BookController {
         }
     }
 
-    @PostMapping("/reserve/{id}")
-    public ResponseEntity<String> reserveBook(@PathVariable String id) {
-        boolean isReserved = bookService.reserveBook(id);
-        if (isReserved) {
-            return ResponseEntity.ok("Book reserved successfully.");
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Book not found or not available.");
-        }
-    }
-
-    @PostMapping("/return/{id}")
-    public ResponseEntity<String> returnBook(@PathVariable String id) {
-        boolean isReturned = bookService.returnBook(id);
-        if (isReturned) {
-            return ResponseEntity.ok("Book returned successfully.");
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Book not found or already returned.");
-        }
-    }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteBook(@PathVariable String id) {
         boolean isDeleted = bookService.deleteById(id);
