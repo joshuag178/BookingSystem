@@ -29,12 +29,12 @@ public class LoanService implements ILoanService {
 
     @Override
     public List&lt;Loan&gt; getAllLoans() {
-<span class="nc" id="L32">        return loanRepository.findAll();</span>
+<span class="fc" id="L32">        return loanRepository.findAll();</span>
     }
 
     @Override
     public Optional&lt;Loan&gt; findById(String id) {
-<span class="nc" id="L37">        return loanRepository.findById(id);</span>
+<span class="fc" id="L37">        return loanRepository.findById(id);</span>
     }
 
     @Override
@@ -47,110 +47,79 @@ public class LoanService implements ILoanService {
 <span class="nc" id="L47">        return loanRepository.findByBookId(bookId);</span>
     }
 
-    /*public Loan createLoan(Loan loanDetails) {
-        Optional&lt;User&gt; userOptional = userRepository.findById(loanDetails.getUser().getId());
-        Optional&lt;Book&gt; bookOptional = bookRepository.findById(loanDetails.getBook().getId());
-
-        if (userOptional.isPresent() &amp;&amp; bookOptional.isPresent()) {
-            User user = userOptional.get();
-            Book book = bookOptional.get();
-
-            if (book.isAvailable()) {
-                Loan loan = Loan.builder()
-                        .user(user)
-                        .book(book)
-                        .loanDate(LocalDate.now())
-                        .borrowerName(loanDetails.getBorrowerName())
-                        .borrowerLastName(loanDetails.getBorrowerLastName())
-                        .borrowerDPI(loanDetails.getBorrowerDPI())
-                        .borrowerAddress(loanDetails.getBorrowerAddress())
-                        .borrowerEmail(loanDetails.getBorrowerEmail())
-                        .build();
-
-                book.setStatus(&quot;Prestado&quot;);
-                book.setAvailable(false);
-                bookRepository.save(book);
-                return loanRepository.save(loan);
-            } else {
-                throw new BookNotAvailableException(&quot;Book is not available for loan&quot;);
-            }
-        }
-        throw new ResourceNotFoundException(&quot;User or Book not found&quot;);
-    }*/
-
     @Override
     public Loan createLoan(Loan loanDetails) {
-<span class="nc" id="L83">        Optional&lt;User&gt; userOptional = userRepository.findById(loanDetails.getUser().getId());</span>
-<span class="nc" id="L84">        Optional&lt;Book&gt; bookOptional = bookRepository.findById(loanDetails.getBook().getId());</span>
+<span class="fc" id="L52">        Optional&lt;User&gt; userOptional = userRepository.findById(loanDetails.getUser().getId());</span>
+<span class="fc" id="L53">        Optional&lt;Book&gt; bookOptional = bookRepository.findById(loanDetails.getBook().getId());</span>
 
-<span class="nc bnc" id="L86" title="All 4 branches missed.">        if (userOptional.isPresent() &amp;&amp; bookOptional.isPresent()) {</span>
-<span class="nc" id="L87">            User user = userOptional.get();</span>
-<span class="nc" id="L88">            Book book = bookOptional.get();</span>
+<span class="pc bpc" id="L55" title="2 of 4 branches missed.">        if (userOptional.isPresent() &amp;&amp; bookOptional.isPresent()) {</span>
+<span class="fc" id="L56">            User user = userOptional.get();</span>
+<span class="fc" id="L57">            Book book = bookOptional.get();</span>
 
-<span class="nc bnc" id="L90" title="All 2 branches missed.">            if (book.isAvailable()) {</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">            if (book.isAvailable()) {</span>
                 String newStatus;
-<span class="nc bnc" id="L92" title="All 2 branches missed.">                if (&quot;Loan&quot;.equalsIgnoreCase(loanDetails.getType())) {</span>
-<span class="nc" id="L93">                    newStatus = &quot;Borrowed&quot;;</span>
-<span class="nc bnc" id="L94" title="All 2 branches missed.">                } else if (&quot;Booking&quot;.equalsIgnoreCase(loanDetails.getType())) {</span>
-<span class="nc" id="L95">                    newStatus = &quot;Reserved&quot;;</span>
+<span class="pc bpc" id="L61" title="1 of 2 branches missed.">                if (&quot;Loan&quot;.equalsIgnoreCase(loanDetails.getType())) {</span>
+<span class="fc" id="L62">                    newStatus = &quot;Borrowed&quot;;</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">                } else if (&quot;Booking&quot;.equalsIgnoreCase(loanDetails.getType())) {</span>
+<span class="nc" id="L64">                    newStatus = &quot;Reserved&quot;;</span>
                 } else {
-<span class="nc" id="L97">                    throw new IllegalArgumentException(&quot;Invalid loan type: &quot; + loanDetails.getType());</span>
+<span class="nc" id="L66">                    throw new IllegalArgumentException(&quot;Invalid loan type: &quot; + loanDetails.getType());</span>
                 }
 
-<span class="nc" id="L100">                Loan loan = Loan.builder()</span>
-<span class="nc" id="L101">                        .user(user)</span>
-<span class="nc" id="L102">                        .book(book)</span>
-<span class="nc" id="L103">                        .loanDate(LocalDate.now())</span>
-<span class="nc" id="L104">                        .borrowerName(loanDetails.getBorrowerName())</span>
-<span class="nc" id="L105">                        .borrowerLastName(loanDetails.getBorrowerLastName())</span>
-<span class="nc" id="L106">                        .borrowerDPI(loanDetails.getBorrowerDPI())</span>
-<span class="nc" id="L107">                        .borrowerAddress(loanDetails.getBorrowerAddress())</span>
-<span class="nc" id="L108">                        .borrowerEmail(loanDetails.getBorrowerEmail())</span>
-<span class="nc" id="L109">                        .type(loanDetails.getType())</span>
-<span class="nc" id="L110">                        .build();</span>
+<span class="fc" id="L69">                Loan loan = Loan.builder()</span>
+<span class="fc" id="L70">                        .user(user)</span>
+<span class="fc" id="L71">                        .book(book)</span>
+<span class="fc" id="L72">                        .loanDate(LocalDate.now())</span>
+<span class="fc" id="L73">                        .borrowerName(loanDetails.getBorrowerName())</span>
+<span class="fc" id="L74">                        .borrowerLastName(loanDetails.getBorrowerLastName())</span>
+<span class="fc" id="L75">                        .borrowerDPI(loanDetails.getBorrowerDPI())</span>
+<span class="fc" id="L76">                        .borrowerAddress(loanDetails.getBorrowerAddress())</span>
+<span class="fc" id="L77">                        .borrowerEmail(loanDetails.getBorrowerEmail())</span>
+<span class="fc" id="L78">                        .type(loanDetails.getType())</span>
+<span class="fc" id="L79">                        .build();</span>
 
-<span class="nc" id="L112">                book.setStatus(newStatus);</span>
-<span class="nc" id="L113">                book.setAvailable(false);</span>
-<span class="nc" id="L114">                bookRepository.save(book);</span>
-<span class="nc" id="L115">                return loanRepository.save(loan);</span>
+<span class="fc" id="L81">                book.setStatus(newStatus);</span>
+<span class="fc" id="L82">                book.setAvailable(false);</span>
+<span class="fc" id="L83">                bookRepository.save(book);</span>
+<span class="fc" id="L84">                return loanRepository.save(loan);</span>
             } else {
-<span class="nc" id="L117">                throw new BookNotAvailableException(&quot;Book is not available for loan/booking&quot;);</span>
+<span class="fc" id="L86">                throw new BookNotAvailableException(&quot;Book is not available for loan/booking&quot;);</span>
             }
         }
-<span class="nc" id="L120">        throw new ResourceNotFoundException(&quot;User or Book not found&quot;);</span>
+<span class="nc" id="L89">        throw new ResourceNotFoundException(&quot;User or Book not found&quot;);</span>
     }
 
     @Override
     public void reserveBook(String bookId) {
-<span class="nc" id="L125">        Optional&lt;Book&gt; bookOptional = bookRepository.findById(bookId);</span>
-<span class="nc bnc" id="L126" title="All 2 branches missed.">        if (bookOptional.isPresent()) {</span>
-<span class="nc" id="L127">            Book book = bookOptional.get();</span>
-<span class="nc bnc" id="L128" title="All 2 branches missed.">            if (book.isAvailable()) {</span>
-<span class="nc" id="L129">                book.setStatus(&quot;Reserved&quot;);</span>
-<span class="nc" id="L130">                book.setAvailable(false);</span>
-<span class="nc" id="L131">                bookRepository.save(book);</span>
+<span class="fc" id="L94">        Optional&lt;Book&gt; bookOptional = bookRepository.findById(bookId);</span>
+<span class="pc bpc" id="L95" title="1 of 2 branches missed.">        if (bookOptional.isPresent()) {</span>
+<span class="fc" id="L96">            Book book = bookOptional.get();</span>
+<span class="pc bpc" id="L97" title="1 of 2 branches missed.">            if (book.isAvailable()) {</span>
+<span class="fc" id="L98">                book.setStatus(&quot;Reserved&quot;);</span>
+<span class="fc" id="L99">                book.setAvailable(false);</span>
+<span class="fc" id="L100">                bookRepository.save(book);</span>
             } else {
-<span class="nc" id="L133">                throw new BookNotAvailableException(&quot;Book is not available for reservation&quot;);</span>
+<span class="nc" id="L102">                throw new BookNotAvailableException(&quot;Book is not available for reservation&quot;);</span>
             }
-<span class="nc" id="L135">        } else {</span>
-<span class="nc" id="L136">            throw new ResourceNotFoundException(&quot;Book not found&quot;);</span>
+<span class="fc" id="L104">        } else {</span>
+<span class="nc" id="L105">            throw new ResourceNotFoundException(&quot;Book not found&quot;);</span>
         }
-<span class="nc" id="L138">    }</span>
+<span class="fc" id="L107">    }</span>
 
     @Override
     public boolean returnLoan(String loanId) {
-<span class="nc" id="L142">        Optional&lt;Loan&gt; loanOptional = loanRepository.findById(loanId);</span>
-<span class="nc bnc" id="L143" title="All 2 branches missed.">        if (loanOptional.isPresent()) {</span>
-<span class="nc" id="L144">            Loan loan = loanOptional.get();</span>
-<span class="nc" id="L145">            Book book = loan.getBook();</span>
-<span class="nc" id="L146">            book.setStatus(&quot;Disponible&quot;);</span>
-<span class="nc" id="L147">            book.setAvailable(true);</span>
-<span class="nc" id="L148">            bookRepository.save(book);</span>
-<span class="nc" id="L149">            loan.setReturnDate(LocalDate.now());</span>
-<span class="nc" id="L150">            loanRepository.save(loan);</span>
-<span class="nc" id="L151">            return true;</span>
+<span class="fc" id="L111">        Optional&lt;Loan&gt; loanOptional = loanRepository.findById(loanId);</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">        if (loanOptional.isPresent()) {</span>
+<span class="fc" id="L113">            Loan loan = loanOptional.get();</span>
+<span class="fc" id="L114">            Book book = loan.getBook();</span>
+<span class="fc" id="L115">            book.setStatus(&quot;Disponible&quot;);</span>
+<span class="fc" id="L116">            book.setAvailable(true);</span>
+<span class="fc" id="L117">            bookRepository.save(book);</span>
+<span class="fc" id="L118">            loan.setReturnDate(LocalDate.now());</span>
+<span class="fc" id="L119">            loanRepository.save(loan);</span>
+<span class="fc" id="L120">            return true;</span>
         }
-<span class="nc" id="L153">        return false;</span>
+<span class="fc" id="L122">        return false;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

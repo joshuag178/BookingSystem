@@ -1,5 +1,9 @@
+com\bookingsystem\BookingSystem\service\LoanServiceTest.class
+com\bookingsystem\BookingSystem\BookingSystemApplicationTests.class
+com\bookingsystem\BookingSystem\service\BookServiceTest.class
 com\bookingsystem\BookingSystem\controller\RoleControllerTest.class
 com\bookingsystem\BookingSystem\controller\UserControllerTest.class
-com\bookingsystem\BookingSystem\BookingSystemApplicationTests.class
+com\bookingsystem\BookingSystem\service\UserServiceTest.class
 com\bookingsystem\BookingSystem\controller\LoanControllerTest.class
 com\bookingsystem\BookingSystem\controller\BookControllerTest.class
+com\bookingsystem\BookingSystem\service\RoleServiceTest.class

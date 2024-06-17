@@ -18,58 +18,58 @@ public class UserService implements IUserService {
 
     @Override
     public List&lt;User&gt; getAllUsers() {
-<span class="nc" id="L21">        return userRepository.findAll();</span>
+<span class="fc" id="L21">        return userRepository.findAll();</span>
     }
 
     @Override
     public boolean existsByUsername(String username) {
-<span class="nc" id="L26">        return userRepository.existsByUsername(username);</span>
+<span class="fc" id="L26">        return userRepository.existsByUsername(username);</span>
     }
 
     @Override
     public boolean existsByEmail(String email) {
-<span class="nc" id="L31">        return userRepository.existsByEmail(email);</span>
+<span class="fc" id="L31">        return userRepository.existsByEmail(email);</span>
     }
 
     @Override
     public Optional&lt;User&gt; findById(String id) {
-<span class="nc" id="L36">        return userRepository.findById(id);</span>
+<span class="fc" id="L36">        return userRepository.findById(id);</span>
     }
 
     @Override
     public void save(User user) {
-<span class="nc" id="L41">        userRepository.save(user);</span>
-<span class="nc" id="L42">    }</span>
+<span class="fc" id="L41">        userRepository.save(user);</span>
+<span class="fc" id="L42">    }</span>
 
     @Override
     public User updateUser(String id, User userDetails) {
-<span class="nc" id="L46">        Optional&lt;User&gt; userOptional = userRepository.findById(id);</span>
-<span class="nc bnc" id="L47" title="All 2 branches missed.">        if (userOptional.isPresent()) {</span>
-<span class="nc" id="L48">            User user = userOptional.get();</span>
+<span class="fc" id="L46">        Optional&lt;User&gt; userOptional = userRepository.findById(id);</span>
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">        if (userOptional.isPresent()) {</span>
+<span class="fc" id="L48">            User user = userOptional.get();</span>
 
-<span class="nc bnc" id="L50" title="All 2 branches missed.">            if (userDetails.getUsername() != null) {</span>
-<span class="nc" id="L51">                user.setUsername(userDetails.getUsername());</span>
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">            if (userDetails.getUsername() != null) {</span>
+<span class="fc" id="L51">                user.setUsername(userDetails.getUsername());</span>
             }
-<span class="nc bnc" id="L53" title="All 2 branches missed.">            if (userDetails.getName() != null) {</span>
-<span class="nc" id="L54">                user.setName(userDetails.getName());</span>
+<span class="pc bpc" id="L53" title="1 of 2 branches missed.">            if (userDetails.getName() != null) {</span>
+<span class="fc" id="L54">                user.setName(userDetails.getName());</span>
             }
-<span class="nc bnc" id="L56" title="All 2 branches missed.">            if (userDetails.getLastname() != null) {</span>
-<span class="nc" id="L57">                user.setLastname(userDetails.getLastname());</span>
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">            if (userDetails.getLastname() != null) {</span>
+<span class="fc" id="L57">                user.setLastname(userDetails.getLastname());</span>
             }
-<span class="nc bnc" id="L59" title="All 2 branches missed.">            if (userDetails.getEmail() != null) {</span>
-<span class="nc" id="L60">                user.setEmail(userDetails.getEmail());</span>
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">            if (userDetails.getEmail() != null) {</span>
+<span class="fc" id="L60">                user.setEmail(userDetails.getEmail());</span>
             }
-<span class="nc bnc" id="L62" title="All 2 branches missed.">            if (userDetails.getPassword() != null) {</span>
-<span class="nc" id="L63">                user.setPassword(userDetails.getPassword());</span>
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">            if (userDetails.getPassword() != null) {</span>
+<span class="fc" id="L63">                user.setPassword(userDetails.getPassword());</span>
             }
-<span class="nc bnc" id="L65" title="All 2 branches missed.">            if (userDetails.isEnabled() != user.isEnabled()) {</span>
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">            if (userDetails.isEnabled() != user.isEnabled()) {</span>
 <span class="nc" id="L66">                user.setEnabled(userDetails.isEnabled());</span>
             }
-<span class="nc bnc" id="L68" title="All 4 branches missed.">            if (userDetails.getRoles() != null &amp;&amp; !userDetails.getRoles().isEmpty()) {</span>
-<span class="nc" id="L69">                user.setRoles(userDetails.getRoles());</span>
+<span class="pc bpc" id="L68" title="2 of 4 branches missed.">            if (userDetails.getRoles() != null &amp;&amp; !userDetails.getRoles().isEmpty()) {</span>
+<span class="fc" id="L69">                user.setRoles(userDetails.getRoles());</span>
             }
 
-<span class="nc" id="L72">            return userRepository.save(user);</span>
+<span class="fc" id="L72">            return userRepository.save(user);</span>
         } else {
 <span class="nc" id="L74">            return null;</span>
         }
@@ -77,12 +77,12 @@ public class UserService implements IUserService {
 
     @Override
     public boolean deleteById(String id) {
-<span class="nc" id="L80">        Optional&lt;User&gt; userOptional = userRepository.findById(id);</span>
-<span class="nc bnc" id="L81" title="All 2 branches missed.">        if (userOptional.isPresent()) {</span>
-<span class="nc" id="L82">            userRepository.deleteById(id);</span>
-<span class="nc" id="L83">            return true;</span>
+<span class="fc" id="L80">        Optional&lt;User&gt; userOptional = userRepository.findById(id);</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">        if (userOptional.isPresent()) {</span>
+<span class="fc" id="L82">            userRepository.deleteById(id);</span>
+<span class="fc" id="L83">            return true;</span>
         } else {
-<span class="nc" id="L85">            return false;</span>
+<span class="fc" id="L85">            return false;</span>
         }
     }
 }

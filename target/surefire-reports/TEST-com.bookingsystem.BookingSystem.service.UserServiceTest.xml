@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.bookingsystem.BookingSystem.controller.RoleControllerTest" time="0.58" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.bookingsystem.BookingSystem.service.UserServiceTest" time="0.03" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -67,32 +67,12 @@
     <property name="java.class.version" value="65.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[BookingSystem] "/>
   </properties>
-  <testcase name="getAllRoles_shouldReturnListOfRoles" classname="com.bookingsystem.BookingSystem.controller.RoleControllerTest" time="0.029">
-    <system-out><![CDATA[2024-06-16T18:31:58.767-06:00  INFO 9160 --- [BookingSystem] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.bookingsystem.BookingSystem.controller.RoleControllerTest]: RoleControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-06-16T18:31:58.778-06:00  INFO 9160 --- [BookingSystem] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.bookingsystem.BookingSystem.BookingSystemApplication for test class com.bookingsystem.BookingSystem.controller.RoleControllerTest
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::                (v3.2.5)
-
-2024-06-16T18:31:58.812-06:00  INFO 9160 --- [BookingSystem] [           main] c.b.B.controller.RoleControllerTest      : Starting RoleControllerTest using Java 21.0.3 with PID 9160 (started by Josue.Garcia in D:\Cursos\NTCL - Java Backend Spring Boot Developer Mid Level\Actividades\Clase 9\BookingSystem)
-2024-06-16T18:31:58.812-06:00  INFO 9160 --- [BookingSystem] [           main] c.b.B.controller.RoleControllerTest      : No active profile set, falling back to 1 default profile: "default"
-2024-06-16T18:31:59.167-06:00  WARN 9160 --- [BookingSystem] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
-
-Using generated security password: 4a88da43-0af9-4cdb-b244-6a07fc87670b
-
-This generated password is for development use only. Your security configuration must be updated before running your application in production.
-
-2024-06-16T18:31:59.226-06:00  INFO 9160 --- [BookingSystem] [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2165fcfa, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@58f83032, org.springframework.security.web.context.SecurityContextHolderFilter@186da764, org.springframework.security.web.header.HeaderWriterFilter@568bbbcd, org.springframework.web.filter.CorsFilter@22fc3e19, org.springframework.security.web.authentication.logout.LogoutFilter@6e02fcd8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@39b12cf3, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@107faa4e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3230a186, org.springframework.security.web.access.ExceptionTranslationFilter@9941e7d, org.springframework.security.web.access.intercept.AuthorizationFilter@33246f17]
-2024-06-16T18:31:59.277-06:00  INFO 9160 --- [BookingSystem] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2024-06-16T18:31:59.277-06:00  INFO 9160 --- [BookingSystem] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2024-06-16T18:31:59.278-06:00  INFO 9160 --- [BookingSystem] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2024-06-16T18:31:59.288-06:00  INFO 9160 --- [BookingSystem] [           main] c.b.B.controller.RoleControllerTest      : Started RoleControllerTest in 0.506 seconds (process running for 18.968)
-]]></system-out>
-  </testcase>
-  <testcase name="createUser_shouldCreateAndReturnRole" classname="com.bookingsystem.BookingSystem.controller.RoleControllerTest" time="0.02"/>
+  <testcase name="findById_shouldReturnUser" classname="com.bookingsystem.BookingSystem.service.UserServiceTest" time="0.003"/>
+  <testcase name="getAllUsers_shouldReturnUserList" classname="com.bookingsystem.BookingSystem.service.UserServiceTest" time="0.003"/>
+  <testcase name="save_shouldSaveUser" classname="com.bookingsystem.BookingSystem.service.UserServiceTest" time="0.003"/>
+  <testcase name="updateUser_shouldReturnUpdatedUser" classname="com.bookingsystem.BookingSystem.service.UserServiceTest" time="0.004"/>
+  <testcase name="existsByEmail_shouldReturnTrue" classname="com.bookingsystem.BookingSystem.service.UserServiceTest" time="0.002"/>
+  <testcase name="deleteById_shouldReturnTrue" classname="com.bookingsystem.BookingSystem.service.UserServiceTest" time="0.002"/>
+  <testcase name="deleteById_shouldReturnFalseWhenUserNotFound" classname="com.bookingsystem.BookingSystem.service.UserServiceTest" time="0.003"/>
+  <testcase name="existsByUsername_shouldReturnTrue" classname="com.bookingsystem.BookingSystem.service.UserServiceTest" time="0.003"/>
 </testsuite>

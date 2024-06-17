@@ -47,37 +47,6 @@ public class LoanService implements ILoanService {
         return loanRepository.findByBookId(bookId);
     }
 
-    /*public Loan createLoan(Loan loanDetails) {
-        Optional<User> userOptional = userRepository.findById(loanDetails.getUser().getId());
-        Optional<Book> bookOptional = bookRepository.findById(loanDetails.getBook().getId());
-
-        if (userOptional.isPresent() && bookOptional.isPresent()) {
-            User user = userOptional.get();
-            Book book = bookOptional.get();
-
-            if (book.isAvailable()) {
-                Loan loan = Loan.builder()
-                        .user(user)
-                        .book(book)
-                        .loanDate(LocalDate.now())
-                        .borrowerName(loanDetails.getBorrowerName())
-                        .borrowerLastName(loanDetails.getBorrowerLastName())
-                        .borrowerDPI(loanDetails.getBorrowerDPI())
-                        .borrowerAddress(loanDetails.getBorrowerAddress())
-                        .borrowerEmail(loanDetails.getBorrowerEmail())
-                        .build();
-
-                book.setStatus("Prestado");
-                book.setAvailable(false);
-                bookRepository.save(book);
-                return loanRepository.save(loan);
-            } else {
-                throw new BookNotAvailableException("Book is not available for loan");
-            }
-        }
-        throw new ResourceNotFoundException("User or Book not found");
-    }*/
-
     @Override
     public Loan createLoan(Loan loanDetails) {
         Optional<User> userOptional = userRepository.findById(loanDetails.getUser().getId());

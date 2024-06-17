@@ -18,47 +18,47 @@ public class BookService implements IBookService {
 
     @Override
     public List&lt;Book&gt; getAllBooks() {
-<span class="nc" id="L21">        return bookRepository.findAll();</span>
+<span class="fc" id="L21">        return bookRepository.findAll();</span>
     }
 
     @Override
     public Optional&lt;Book&gt; findById(String id) {
-<span class="nc" id="L26">        return bookRepository.findById(id);</span>
+<span class="fc" id="L26">        return bookRepository.findById(id);</span>
     }
 
     @Override
     public List&lt;Book&gt; searchBooksByTitle(String title) {
-<span class="nc" id="L31">        return bookRepository.findByTitleContaining(title);</span>
+<span class="fc" id="L31">        return bookRepository.findByTitleContaining(title);</span>
     }
 
     @Override
     public List&lt;Book&gt; searchBooksByAuthor(String author) {
-<span class="nc" id="L36">        return bookRepository.findByAuthorContaining(author);</span>
+<span class="fc" id="L36">        return bookRepository.findByAuthorContaining(author);</span>
     }
 
     @Override
     public void save(Book book) {
-<span class="nc" id="L41">        bookRepository.save(book);</span>
-<span class="nc" id="L42">    }</span>
+<span class="fc" id="L41">        bookRepository.save(book);</span>
+<span class="fc" id="L42">    }</span>
 
     @Override
     public Book updateBook(String id, Book bookDetails) {
-<span class="nc" id="L46">        Optional&lt;Book&gt; bookOptional = bookRepository.findById(id);</span>
-<span class="nc bnc" id="L47" title="All 2 branches missed.">        if (bookOptional.isPresent()) {</span>
-<span class="nc" id="L48">            Book book = bookOptional.get();</span>
-<span class="nc bnc" id="L49" title="All 2 branches missed.">            if (bookDetails.getTitle() != null) {</span>
-<span class="nc" id="L50">                book.setTitle(bookDetails.getTitle());</span>
+<span class="fc" id="L46">        Optional&lt;Book&gt; bookOptional = bookRepository.findById(id);</span>
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">        if (bookOptional.isPresent()) {</span>
+<span class="fc" id="L48">            Book book = bookOptional.get();</span>
+<span class="pc bpc" id="L49" title="1 of 2 branches missed.">            if (bookDetails.getTitle() != null) {</span>
+<span class="fc" id="L50">                book.setTitle(bookDetails.getTitle());</span>
             }
-<span class="nc bnc" id="L52" title="All 2 branches missed.">            if (bookDetails.getAuthor() != null) {</span>
-<span class="nc" id="L53">                book.setAuthor(bookDetails.getAuthor());</span>
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">            if (bookDetails.getAuthor() != null) {</span>
+<span class="fc" id="L53">                book.setAuthor(bookDetails.getAuthor());</span>
             }
-<span class="nc bnc" id="L55" title="All 2 branches missed.">            if (bookDetails.getEditorial() != null) {</span>
-<span class="nc" id="L56">                book.setEditorial(bookDetails.getEditorial());</span>
+<span class="pc bpc" id="L55" title="1 of 2 branches missed.">            if (bookDetails.getEditorial() != null) {</span>
+<span class="fc" id="L56">                book.setEditorial(bookDetails.getEditorial());</span>
             }
-<span class="nc bnc" id="L58" title="All 2 branches missed.">            if (bookDetails.getPublishedDate() != null) {</span>
-<span class="nc" id="L59">                book.setPublishedDate(bookDetails.getPublishedDate());</span>
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">            if (bookDetails.getPublishedDate() != null) {</span>
+<span class="fc" id="L59">                book.setPublishedDate(bookDetails.getPublishedDate());</span>
             }
-<span class="nc" id="L61">            return bookRepository.save(book);</span>
+<span class="fc" id="L61">            return bookRepository.save(book);</span>
         } else {
 <span class="nc" id="L63">            return null;</span>
         }
@@ -66,12 +66,12 @@ public class BookService implements IBookService {
 
     @Override
     public boolean deleteById(String id) {
-<span class="nc" id="L69">        Optional&lt;Book&gt; bookOptional = bookRepository.findById(id);</span>
-<span class="nc bnc" id="L70" title="All 2 branches missed.">        if (bookOptional.isPresent()) {</span>
-<span class="nc" id="L71">            bookRepository.deleteById(id);</span>
-<span class="nc" id="L72">            return true;</span>
+<span class="fc" id="L69">        Optional&lt;Book&gt; bookOptional = bookRepository.findById(id);</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        if (bookOptional.isPresent()) {</span>
+<span class="fc" id="L71">            bookRepository.deleteById(id);</span>
+<span class="fc" id="L72">            return true;</span>
         } else {
-<span class="nc" id="L74">            return false;</span>
+<span class="fc" id="L74">            return false;</span>
         }
     }
 }
